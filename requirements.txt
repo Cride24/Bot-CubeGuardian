@@ -1,0 +1,57 @@
+# Dépendances Python pour Bot CubeGuardian
+# Versions vérifiées le 2025-01-16
+
+# Discord API
+discord.py>=2.6.3    # Version stable actuelle (2025)
+# Source: https://pypi.org/project/discord.py/
+
+# Configuration et gestion des fichiers
+PyYAML>=6.0          # Gestion des fichiers YAML
+python-dotenv>=1.0.0 # Gestion des variables d'environnement
+
+# Gestion asynchrone et système
+# asyncio : module built-in Python 3.7+ (pas besoin d'installation)
+psutil>=5.9.0        # Monitoring système et processus
+
+# Modules Python natifs (remplacent les scripts PowerShell)
+wakeonlan>=3.0.0     # Wake-on-LAN natif Python
+paramiko>=3.4.0      # Client SSH natif Python
+
+# Gestion des logs
+colorlog>=6.7.0      # Logs colorés pour le développement
+
+# Tests (développement uniquement)
+pytest>=7.4.0        # Framework de tests
+pytest-asyncio>=0.21.0 # Support asynchrone pour pytest
+
+# Validation et sécurité
+cryptography>=41.0.0 # Chiffrement pour les secrets
+validators>=0.22.0   # Validation des données
+
+# Monitoring et métriques
+aiohttp>=3.8.0       # Serveur HTTP pour health checks
+prometheus-client>=0.17.0 # Métriques Prometheus (optionnel)
+
+# Gestion des erreurs et retry
+tenacity>=8.2.0      # Gestion des tentatives et retry
+
+# NLP et reconnaissance de commandes (Version 2.1.0)
+fuzzywuzzy>=0.18.0   # Calcul de similarité avec distance Levenshtein
+python-Levenshtein>=0.20.0 # Optimisation rapide pour fuzzywuzzy
+# unicodedata : module built-in Python (pas besoin d'installation)
+
+# Utilitaires
+# pathlib : module built-in Python 3.4+ (pas besoin d'installation)
+typing-extensions>=4.7.0 # Extensions de typing pour Python < 3.10
+
+# Sources des versions :
+# discord.py : https://pypi.org/project/discord.py/
+# PyYAML : https://pypi.org/project/PyYAML/
+# python-dotenv : https://pypi.org/project/python-dotenv/
+# psutil : https://pypi.org/project/psutil/
+# pytest : https://pypi.org/project/pytest/
+# cryptography : https://pypi.org/project/cryptography/
+# aiohttp : https://pypi.org/project/aiohttp/
+# tenacity : https://pypi.org/project/tenacity/
+
+# Dernière vérification : 2025-01-16

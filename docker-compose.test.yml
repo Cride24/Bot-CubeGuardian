@@ -1,0 +1,58 @@
+# Docker Compose pour Bot CubeGuardian - Version Test
+# Configuration simplifiée pour les tests
+
+version: "3.8"
+
+services:
+  cubeguardian:
+    build: .
+    image: cubeguardian:latest
+    container_name: cubeguardian-test
+    restart: "no"
+
+    # Variables d'environnement
+    environment:
+      - PYTHONUNBUFFERED=1
+      - LOG_LEVEL=INFO
+      - BOT_DEBUG=false
+
+    # Volumes persistants
+    volumes:
+      - ./logs:/home/cubeguardian/logs:rw
+      - ./config:/home/cubeguardian/config:ro
+      - ./keys:/home/cubeguardian/keys:ro
+
+    # Limites de ressources
+    deploy:
+      resources:
+        limits:
+          memory: 512M
+          cpus: "0.5"
+        reservations:
+          memory: 256M
+          cpus: "0.25"
+
+    # Ports (pour health check)
+    ports:
+      - "8080:8080"
+
+    # Réseau - Utiliser le réseau host pour accéder au réseau local
+    network_mode: "host"
+    
+    # Capabilities nécessaires pour ping
+    cap_add:
+      - NET_RAW
+      - NET_ADMIN
+
+    # Health check
+    healthcheck:
+      test: [ "CMD", "python", "-c", "import sys; sys.exit(0)" ]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+# Réseau
+networks:
+  cubeguardian-network:
+    driver: bridge

@@ -1,0 +1,56 @@
+# Messages et phrases du bot
+messages:
+  # Messages de démarrage
+  startup:
+    request: "🟡 Démarrage du serveur demandé par {user}"
+    in_progress: "🟡 Démarrage en cours... Veuillez patienter"
+    success: "🟢 Serveur opérationnel en {time} secondes ! Minecraft disponible"
+    failed: "❌ Échec du démarrage du serveur après {timeout} minutes"
+    timeout: "⏰ Serveur non disponible après {timeout} minutes"
+    already_operational: "🟢 Serveur déjà opérationnel ! Minecraft disponible"
+
+  # Messages de logs
+  logs:
+    startup_initiated: "Démarrage initié par {user}"
+    server_available: "Serveur disponible après {time} minutes"
+    startup_failed: "Échec du démarrage du serveur après {time} minutes"
+    proxmox_connectivity_failed: "Échec de la connectivité Proxmox"
+    minecraft_connectivity_failed: "Échec de la connectivité Minecraft"
+    proxmox_shutdown: "Arrêt de Proxmox"
+    shutdown_scheduled: "Arrêt programmé dans {time} minutes"
+    shutdown_cancelled: "Arrêt annulé. Utilisateur autorisé détecté. {user}"
+    shutdown_in_progress: "Arrêt du serveur en cours..."
+    server_shutdown: "Serveur arrêté à {time}"
+    server_not_shutdown: "Serveur non arrêté à {time}"
+
+  # Messages d'arrêt
+  shutdown:
+    initiated: "⏰ Aucun utilisateur autorisé détecté. Arrêt dans {delay} minutes..."
+    cancelled: "✅ Arrêt annulé. Utilisateur autorisé détecté. Bienvenu {user}"
+    in_progress: "🔴 Arrêt du serveur en cours..."
+    confirmed: "⚫ Serveur arrêté avec succès en {time} secondes"
+    failed: "❌ Échec de l'arrêt du serveur"
+
+  # Messages d'erreur
+  errors:
+    connectivity: "🔌 Problème de connectivité détecté"
+    module_error: "⚠️ Erreur dans le module {module}"
+    permission_denied: "🚫 Permission refusée pour {user}"
+    server_unreachable: "🌐 Serveur {server} inaccessible"
+    wake_on_lan_failed: "⚠️ Échec du Wake-on-LAN vers {target_host}\nErreur: {error}\nLe serveur ne démarrera pas automatiquement."
+    ssh_connection_failed: "⚠️ Échec de la connexion SSH"
+
+  # Messages d'information
+  info:
+    bot_started: "🤖 CubeGuardian démarré et en surveillance"
+    user_joined: "👋 {user} a rejoint le salon vocal"
+    user_left: "👋 {user} a quitté le salon vocal"
+    monitoring_active: "👁️ Surveillance active du salon {channel}"
+
+  # Messages d'alerte admin
+  admin_alerts:
+    startup_failed: "🚨 ALERTE ADMIN : Échec du démarrage du serveur"
+    shutdown_failed: "🚨 ALERTE ADMIN : Échec de l'arrêt du serveur"
+    connectivity_lost: "🚨 ALERTE ADMIN : Perte de connectivité"
+    module_error: "🚨 ALERTE ADMIN : Erreur module {module} - {error}"
+    bot_crashed: "🚨 ALERTE ADMIN : Le bot a planté - {error}"

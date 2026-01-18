@@ -1,0 +1,24 @@
+# Configuration des serveurs
+servers:
+  proxmox:
+    name: "LM150g6"
+    node_name: "pve" # Nom du nœud Proxmox
+    ipv4: "192.168.1.245"
+    mac_address: "00:23:7D:FD:C0:5C"
+    wake_on_lan_enabled: true # Activé pour tester le démarrage
+    # Configuration API REST
+    api_url: "https://192.168.1.245:8006/api2/json"
+    api_token_id: "cubeguardian@pam!cubeguardian-discord-bot"
+    api_token_secret: "7420cec7-e4bc-4248-adc0-9c38738acce8"
+    # Configuration SSH (désactivée)
+    ssh_user: "root"
+    ssh_key_path: "C:\\Users\\cedri\\Desktop\\Projet_Maison\\Serveur_local\\ssh-keys\\pve\\pve-key" # Chemin local Windows
+    # Pour Docker : utiliser "./keys/proxmox_ssh_key"
+    web_interface: "https://192.168.1.245:8006"
+
+  minecraft:
+    name: "Minecraft Server"
+    ipv4: "192.168.1.105" # IP du serveur Minecraft
+    port: 25565
+    timeout: 5 # Timeout pour test de connectivité
+    startup_delay: 380 # Délai après démarrage Proxmox avant test Minecraft (augmenté pour stabilité)

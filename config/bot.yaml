@@ -1,0 +1,53 @@
+# Configuration principale du bot CubeGuardian
+# Versions vérifiées le 2025-01-16
+
+bot:
+  name: "CubeGuardian"
+  version: "1.2.0" # Version Python natif
+  debug: false
+  log_level: "INFO" # DEBUG, INFO, WARNING, ERROR
+
+  # Versions des technologies (vérifiées avec sources officielles)
+  technologies:
+    python: "3.11+"
+    discord_py: "2.6.3+"
+    discord_api: "v10"
+    wakeonlan: "3.0+"
+    paramiko: "3.4+"
+    docker: "20.10+"
+
+# Timers et délais (en secondes)
+timers:
+  startup_timeout: 600 # 10 minutes pour le démarrage
+  shutdown_delay: 600 # 10 minutes avant arrêt
+  shutdown_confirm: 60 # 1 minute pour confirmer l'arrêt
+  connectivity_check: 10 # 10 secondes entre vérifications
+  reconnect_interval: 30 # 30 secondes entre tentatives
+
+# Configuration des modules Python natifs
+modules:
+  # Modules de gestion des serveurs
+  server_manager:
+    wake_on_lan: "src.server_manager.wake_on_lan.WakeOnLANManager"
+    ssh_manager: "src.server_manager.ssh_manager.SSHManager"
+    connectivity_checker: "src.server_manager.connectivity_checker.ConnectivityChecker"
+    minecraft_checker: "src.server_manager.minecraft_checker.MinecraftChecker"
+    server_manager: "src.server_manager.server_manager.ServerManager"
+
+  # Configuration des modules
+  config:
+    working_directory: "./"
+    log_level: "INFO"
+
+# Logs
+logging:
+  file_enabled: true
+  file_path: "./logs/cubeguardian.log"
+  max_file_size: "10MB"
+  backup_count: 5
+  discord_logs: true
+
+  # Rotation des logs par nombre de lignes
+  max_lines: 200 # Limite de 200 lignes par fichier
+  rotation_enabled: true # Rotation automatique activée
+  keep_oldest: false # Supprimer les lignes les plus anciennes

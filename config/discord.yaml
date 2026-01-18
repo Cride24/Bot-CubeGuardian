@@ -1,0 +1,22 @@
+# Configuration Discord
+discord:
+  # Token du bot
+  token: "MTQxNDIyOTIzODM2MTYyMDU3Mg.GkGlY-.h5ViiU_9bHWdPpKeNzmsXxcUUYqpWtwfJNWH2c"
+
+  # Salons à surveiller
+  channels:
+    voice_channel: "L'écho-du-Cube"
+    text_channel: "le-serveur-minecraft"
+
+  # Permissions requises
+  intents:
+    - "voice_states"
+    - "members"
+    - "guilds"
+    - "messages"
+
+  # Admin du bot
+  admin:
+    user_id: "334034565003739136" # ID Discord de l'admin
+    dm_on_errors: true
+    dm_on_startup: true

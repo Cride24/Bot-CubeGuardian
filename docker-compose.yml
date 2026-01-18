@@ -1,0 +1,71 @@
+# Docker Compose pour Bot CubeGuardian
+# Configuration pour le développement et la production
+
+version: "3.8"
+
+services:
+  cubeguardian:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: cubeguardian-bot
+    restart: unless-stopped
+
+    # Variables d'environnement
+    environment:
+      - PYTHONUNBUFFERED=1
+      - LOG_LEVEL=INFO
+      - DISCORD_TOKEN_FILE=/run/secrets/discord_token
+      - ADMIN_USER_ID_FILE=/run/secrets/admin_user_id
+
+    # Secrets (production)
+    secrets:
+      - discord_token
+      - admin_user_id
+      - proxmox_ssh_key
+
+    # Volumes persistants
+    volumes:
+      - ./logs:/home/cubeguardian/logs:rw
+      - ./config:/home/cubeguardian/config:ro
+      - ./keys:/home/cubeguardian/keys:ro
+
+    # Limites de ressources
+    deploy:
+      resources:
+        limits:
+          memory: 512M
+          cpus: "0.5"
+        reservations:
+          memory: 256M
+          cpus: "0.25"
+
+    # Ports (pour health check)
+    ports:
+      - "8080:8080"
+
+    # Réseau
+    networks:
+      - cubeguardian-network
+
+    # Health check
+    healthcheck:
+      test: [ "CMD", "python", "-c", "import requests; requests.get('http://localhost:8080/health')" ]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+# Secrets (fichiers locaux)
+secrets:
+  discord_token:
+    file: ./secrets/discord_token.txt
+  admin_user_id:
+    file: ./secrets/admin_user_id.txt
+  proxmox_ssh_key:
+    file: ./secrets/proxmox_ssh_key
+
+# Réseau
+networks:
+  cubeguardian-network:
+    driver: bridge
